@@ -1,0 +1,6 @@
+hostname,ip_address
+google-dns,8.8.8.8
+cloudflare-dns,1.1.1.1
+localhost,127.0.0.1
+router,192.168.1.1
+test-server,192.168.1.100
