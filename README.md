@@ -128,7 +128,7 @@ MIT License
 
 ## 👤 作成者
 
-Sohey Kubota ([@Sohey-k](https://github.com/Sohey-k))
+Sohey-K ([@Sohey-k](https://github.com/Sohey-k))
 
 ## 🙏 謝辞
 
