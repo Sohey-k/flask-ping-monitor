@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}ホスト一覧 - Flask Ping Monitor{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto">
+    <div class="bg-white rounded-lg shadow-lg p-6">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-800">ホスト一覧</h2>
+            <a href="{{ url_for('add_new_host') }}"
+                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-md transition duration-200">
+                + 新規登録
+            </a>
+        </div>
+
+        {% if hosts %}
+        <form id="hostForm">
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-300">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="py-3 px-4 border-b text-left">選択</th>
+                            <th class="py-3 px-4 border-b text-left">ID</th>
+                            <th class="py-3 px-4 border-b text-left">ホスト名</th>
+                            <th class="py-3 px-4 border-b text-left">IPアドレス</th>
+                            <th class="py-3 px-4 border-b text-left">登録日時</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for host in hosts %}
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-3 px-4 border-b">
+                                <input type="radio" name="selectedHost" value="{{ host.id }}" class="w-4 h-4">
+                            </td>
+                            <td class="py-3 px-4 border-b">{{ host.id }}</td>
+                            <td class="py-3 px-4 border-b font-semibold">{{ host.hostname }}</td>
+                            <td class="py-3 px-4 border-b font-mono text-blue-600">{{ host.ip_address }}</td>
+                            <td class="py-3 px-4 border-b text-gray-600 text-sm">{{ host.created_at }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-6 space-x-4">
+                <button type="button" onclick="editSelected()"
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-md transition duration-200">
+                    編集
+                </button>
+                <button type="button" onclick="deleteSelected()"
+                    class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-6 rounded-md transition duration-200">
+                    削除
+                </button>
+            </div>
+        </form>
+        {% else %}
+        <div class="text-center py-12">
+            <p class="text-gray-500 text-lg mb-4">登録されているホストがありません</p>
+            <a href="{{ url_for('add_new_host') }}"
+                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-md inline-block transition duration-200">
+                最初のホストを登録
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function getSelectedHostId() {
+        const selected = document.querySelector('input[name="selectedHost"]:checked');
+        if (!selected) {
+            alert('ホストを選択してください');
+            return null;
+        }
+        return selected.value;
+    }
+
+    function editSelected() {
+        const hostId = getSelectedHostId();
+        if (hostId) {
+            window.location.href = `/edit/${hostId}`;
+        }
+    }
+
+    function deleteSelected() {
+        const hostId = getSelectedHostId();
+        if (hostId) {
+            if (confirm('本当に削除しますか？')) {
+                window.location.href = `/edit/${hostId}`;
+            }
+        }
+    }
+</script>
+{% endblock %}

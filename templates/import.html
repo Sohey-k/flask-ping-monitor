@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}CSVインポート - Flask Ping Monitor{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+    <div class="bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">CSVインポート</h2>
+
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+            <p class="text-sm text-yellow-800">
+                <strong>CSV形式:</strong> 1行目にヘッダー（hostname,ip_address）、2行目以降にデータを記述してください。
+            </p>
+        </div>
+
+        <div class="mb-6">
+            <h3 class="font-bold text-gray-700 mb-2">サンプルCSV形式</h3>
+            <div class="bg-gray-100 p-4 rounded-md font-mono text-sm">
+                hostname,ip_address<br>
+                web-server,192.168.1.10<br>
+                db-server,192.168.1.20<br>
+                mail-server,192.168.1.30
+            </div>
+        </div>
+
+        <p class="text-gray-700 mb-4">
+            現在のサンプルCSVファイル: <code class="bg-gray-100 px-2 py-1 rounded">data/sample_hosts.csv</code>
+        </p>
+
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+            <p class="text-sm text-blue-800">
+                <strong>手動インポート方法:</strong><br>
+                ターミナルで以下のコマンドを実行してください：<br>
+                <code class="bg-white px-2 py-1 rounded mt-2 inline-block">python3 csv_import.py</code>
+            </p>
+        </div>
+
+        <div class="mt-6">
+            <a href="{{ url_for('list_hosts') }}"
+                class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-md transition duration-200 inline-block">
+                一覧に戻る
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
