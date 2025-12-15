@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 import subprocess
+import platform
 import re
 from database import (
     init_db, get_all_hosts, get_host_by_id, 
