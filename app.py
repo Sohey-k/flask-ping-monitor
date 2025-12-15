@@ -134,5 +134,10 @@ def edit_host(host_id):
     
     return render_template('edit.html', host=host)
 
+@app.route("/import")
+def import_hosts():
+    return render_template("import.html")
+
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

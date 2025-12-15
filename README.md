@@ -1,12 +1,15 @@
 # Flask Ping Monitor
 
-シンプルなネットワーク監視ツール。SQLiteでホスト情報を管理し、Ping実行・CRUD操作が可能なローカルWebアプリケーション。
+シンプルなネットワーク監視ツール。SQLiteでホスト情報を管理し、Ping実行・CRUD操作が可能なローカルWebアプリケーションです。
+
+Windows / WSL / Linux / macOS の実行環境差異を考慮して設計しており、実務で遭遇しやすい課題を意識した構成になっています。
 
 ## 🚀 特徴
 
 - **Ping実行**: ホストを選択して5回Pingを実行し、結果を表示
 - **ホスト管理**: ホスト名とIPアドレスのCRUD操作
 - **CSVインポート**: 既存のホストリストを一括登録
+- **クロスプラットフォーム対応**: OSごとの ping オプション差異を吸収
 - **シンプルUI**: Tailwind CSSによる見やすいインターフェース
 - **ローカル専用**: 認証なしで簡単に使用可能
 
@@ -25,8 +28,8 @@ cd flask-ping-monitor
 
 ### 2. 仮想環境の作成
 ```bash
-python3 -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+python3 -m venv venv # Windows: python -m venv venv
+source venv/bin/activate # Windows: venv\\Scripts\\activate
 ```
 
 ### 3. 依存パッケージのインストール
@@ -36,12 +39,12 @@ pip install -r requirements.txt
 
 ### 4. データベース初期化
 ```bash
-python3 database.py
+python3 database.py # Windows: python database.py
 ```
 
 ### 5. サンプルデータのインポート（オプション）
 ```bash
-python3 csv_import.py
+python3 csv_import.py # Windows: python csv_import.py
 ```
 
 ## 🎯 起動方法
@@ -122,6 +125,16 @@ flask-ping-monitor/
 - SQLインジェクション対策: パラメータ化クエリ使用
 - コマンドインジェクション対策: IPアドレスバリデーション
 
+## 🤖 AIとの協業について
+
+本プロジェクトは ChatGPT を活用したペアプログラミング形式 で開発しました。
+- 設計レビュー
+- OS差異（Windows / Linux / WSL）の洗い出し
+- エラー原因の切り分けと思考整理
+- README・コードのリファクタリング
+を人間主導で行い、「考え方の補助ツール」としてAIを利用しています。
+※単なるコード生成ではなく、実務を想定した試行錯誤・デバッグを重視しています。
+
 ## 📄 ライセンス
 
 MIT License
@@ -132,4 +145,4 @@ Sohey-K ([@Sohey-k](https://github.com/Sohey-k))
 
 ## 🙏 謝辞
 
-実務で使用していたネットワーク監視ツールをベースに、CRUD機能を拡張して作成しました。
+実務で使用していたネットワーク監視ツールの知見をベースに、 CRUD機能・Web UI・クロスプラットフォーム対応を追加して作成しました。
