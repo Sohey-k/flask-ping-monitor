@@ -1,25 +1,25 @@
 @echo off
 echo ====================================
-echo  Flask Ping Monitor èµ·å‹•ä¸­...
+echo  Flask Ping Monitor ‹N“®’†...
 echo ====================================
 echo.
 
 cd /d %~dp0
 
-REM ä»®æƒ³ç’°å¢ƒã®ç¢ºèª
+REM ‰¼‘zŠÂ‹«‚ÌŠm”F
 if not exist venv (
-    echo [ã‚¨ãƒ©ãƒ¼] ä»®æƒ³ç’°å¢ƒãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“
-    echo python -m venv venv ã‚’å®Ÿè¡Œã—ã¦ãã ã•ã„
+    echo [ƒGƒ‰[] ‰¼‘zŠÂ‹«‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ
+    echo python -m venv venv ‚ðŽÀs‚µ‚Ä‚­‚¾‚³‚¢
     pause
     exit /b 1
 )
 
-REM ä»®æƒ³ç’°å¢ƒã‚’æœ‰åŠ¹åŒ–
+REM ‰¼‘zŠÂ‹«‚ð—LŒø‰»
 call venv\Scripts\activate.bat
 
-REM Flaskã‚¢ãƒ—ãƒªèµ·å‹•
-echo [INFO] Flask Ping Monitor ã‚’èµ·å‹•ã—ã¦ã„ã¾ã™...
-echo [INFO] ãƒ–ãƒ©ã‚¦ã‚¶ã§ http://localhost:5000 ã‚’é–‹ã„ã¦ãã ã•ã„
+REM FlaskƒAƒvƒŠ‹N“®
+echo [INFO] Flask Ping Monitor ‚ð‹N“®‚µ‚Ä‚¢‚Ü‚·...
+echo [INFO] ƒuƒ‰ƒEƒU‚Å http://localhost:5000 ‚ðŠJ‚¢‚Ä‚­‚¾‚³‚¢
 echo.
 python app.py
 
