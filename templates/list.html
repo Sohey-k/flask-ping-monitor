@@ -7,14 +7,18 @@
     <div class="bg-white rounded-lg shadow-lg p-6">
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-2xl font-bold text-gray-800">ホスト一覧</h2>
-            <a href="{{ url_for('add_new_host') }}"
-                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-md transition duration-200">
-                + 新規登録
-            </a>
-            <a href="{{ url_for('import_hosts') }}"
-                class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
-                CSVインポート
-            </a>
+
+            <div class="flex space-x-2">
+                <a href="{{ url_for('add_new_host') }}"
+                    class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-md transition duration-200">
+                    + 新規登録
+                </a>
+
+                <a href="{{ url_for('import_hosts') }}"
+                    class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
+                    CSVインポート
+                </a>
+            </div>
         </div>
 
         {% if hosts %}
