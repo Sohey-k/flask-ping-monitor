@@ -18,21 +18,28 @@ def is_valid_ip(ip_address):
     return bool(re.match(ipv4_pattern, ip_address))
 
 def ping_host(ip_address, count=5):
-    """Ping実行（Linux/WSL用）"""
+    """Ping実行（Windows / Linux / WSL 対応）"""
     if not is_valid_ip(ip_address):
         return {"success": False, "error": "無効なIPアドレスです"}
     
     try:
         # Linux/WSL: -c, Windows: -n
+        system = platform.system().lower()
+
+        if system == "windows":
+            cmd = ['ping', '-n', str(count), ip_address]
+        else:
+            cmd = ['ping', '-c', str(count), ip_address]
+
         result = subprocess.run(
-            ['ping', '-c', str(count), ip_address],
+            cmd,
             capture_output=True,
             text=True,
             timeout=15
         )
         
         return {
-            "success": True,
+            "success": result.returncode == 0,
             "output": result.stdout,
             "returncode": result.returncode
         }
