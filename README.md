@@ -4,6 +4,10 @@
 
 Windows / WSL / Linux / macOS の実行環境差異を考慮して設計しており、実務で遭遇しやすい課題を意識した構成になっています。
 
+**🔗 デモ画像:**
+
+<img src="public/Flask_Ping_Monitor.gif" alt="REARME.gif" width="200">
+
 ## 🚀 特徴
 
 - **Ping実行**: ホストを選択して5回Pingを実行し、結果を表示
